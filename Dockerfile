@@ -32,4 +32,6 @@ RUN chmod +x /start.sh
 # Set the startup command
 CMD ["/start.sh"]
 
+COPY .env /var/www/html/.env
+
 EXPOSE 80
