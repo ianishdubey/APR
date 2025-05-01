@@ -25,9 +25,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Install PHP dependencies
 RUN composer install --no-interaction --optimize-autoloader
 
-# Laravel specific setup
-RUN cp .env.example .env && \
-    php artisan key:generate && \
-    php artisan migrate --force 
+# Copy and set the startup script
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Set the startup command
+CMD ["/start.sh"]
 
 EXPOSE 80
