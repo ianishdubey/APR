@@ -28,6 +28,6 @@ RUN composer install --no-interaction --optimize-autoloader
 # Laravel specific setup
 RUN cp .env.example .env && \
     php artisan key:generate && \
-    php artisan migrate --force  # 👈 Added this line
+    php artisan migrate --force 
 
 EXPOSE 80
